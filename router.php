@@ -1,8 +1,6 @@
 <?php
-
-
-    require_once './route-api.php';
-    require_once './app/controlador/controlador.juegos.php';
+    require_once './libs/Router.php';
+    require_once './app/controlador/ControladorVideojuegos.php';
 
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
@@ -15,7 +13,6 @@
      $router->addRoute('videojuegos/:ID', 'GET', 'ControladorVideojuegos', 'VerVideojuegoId');
      //inserto los productos por id
      $router->addRoute('productos', 'POST', 'ControladorVideojuegos', 'agregarJuego');
-
 
 
     //ejecucion de la ruta

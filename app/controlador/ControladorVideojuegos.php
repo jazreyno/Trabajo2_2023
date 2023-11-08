@@ -1,8 +1,6 @@
 <?php 
     require_once './app/vista/vista.juegos.php';
     require_once './app/modelo/modelo.juegos.php';
-    require_once './app/helpers/auth.helper.php';
-    require_once './app/modelo/modelo.empresa.php';
 
 
     class ControladorVideojuegos{
