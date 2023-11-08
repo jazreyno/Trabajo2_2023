@@ -12,11 +12,10 @@
         function __construct(){
             $this->modelojuegos=new ModeloJuegos();
             $this->vistajuegos=new VistaJuegos();
-            
 
             $this->data = file_get_contents("php://input");
-
         }
+
         private function getData() {
             return json_decode($this->data);
         }
@@ -70,8 +69,6 @@
                 $this->vistajuegos->response("Completar los campos vacios", 400 );
              
             }
-
-          
             else{
                 $id = $this->modelojuegos->agregarJuego($videojuegos-> nombre,$videojuegos->genero, $videojuegos->empresa);
                 $videojuegos=$this->modelojuegos->verJuegosId($id);

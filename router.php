@@ -17,3 +17,4 @@
 
     //ejecucion de la ruta
      $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
+    
