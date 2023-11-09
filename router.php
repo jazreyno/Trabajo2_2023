@@ -4,17 +4,23 @@
 
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
+/**
+ * ENDPOINTS
+ * GET api/videojuegos
+ * POST api/videojuegos
+ * GET api/videojuegos/:ID (ej api/videojuegos/123)
+ * PUT api/videojuegos/:ID (ej api/videojuegos/123)
+ * DELETE api/videojuegos/:ID (ej api/videojuegos/123)
+ */
+
     $router = new Router();
-    //obtengo los videojuegos
-     $router->addRoute('videojuegos', 'GET', 'ControladorVideojuegos', 'VerVideojuegos');
-     //elimino los productos por id
-     $router->addRoute('videojuegos/:ID', 'DELETE', 'ControladorVideojuegos', 'eliminarJuego');
-     //obtengo los productos por id
-     $router->addRoute('videojuegos/:ID', 'GET', 'ControladorVideojuegos', 'VerVideojuegoId');
-     //inserto los productos por id
-     $router->addRoute('productos', 'POST', 'ControladorVideojuegos', 'agregarJuego');
 
-
+    $router->addRoute('videojuegos', 'GET', 'ControladorVideojuegos', 'VerVideojuegos');
+    $router->addRoute('videojuegos', 'POST', 'ControladorVideojuegos', 'agregarJuego'); 
+    $router->addRoute('videojuegos/:ID', 'GET', 'ControladorVideojuegos', 'VerVideojuegoId');
+    $router->addRoute('videojuegos/:ID', 'PUT', 'ControladorVideojuegos', 'actualizarJuego');
+    $router->addRoute('videojuegos/:ID', 'DELETE', 'ControladorVideojuegos', 'eliminarJuego');
+     
     //ejecucion de la ruta
      $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
     

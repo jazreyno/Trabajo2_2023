@@ -21,6 +21,7 @@
             
             return $videojuegos;
         }
+        
 
         
         function agregarJuego($nombre,$genero,$empresa){
