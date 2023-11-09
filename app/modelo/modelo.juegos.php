@@ -7,13 +7,9 @@
             $this->db = new PDO('mysql:host=localhost;dbname=trabajo_especial;charset=utf8', 'root', '');
         }
 
-        function verJuegos($params){
-            // $query = $this->db->prepare("SELECT * FROM videojuegos INNER JOIN companias  on videojuegos.id_empresa = companias.id_empresa WHERE videojuegos.id_empresa = $params [where]
-            // order by $params[field] $params[sort] 
-            // LIMIT $params[limit]
-            // OFFSET $params[offset]");
-            $query = $this->db->prepare("SELECT * FROM videojuegos INNER JOIN companias  on videojuegos.id_empresa = companias.id_empresa ");
-
+        function verJuegos($order){
+            
+            $query = $this->db->prepare("SELECT * FROM videojuegos LEFT JOIN companias on videojuegos.id_empresa = companias.id_empresa");
             $query->execute();
 
             //Obtengo arreglo de juegos
@@ -21,7 +17,15 @@
             
             return $videojuegos;
         }
-        
+  
+
+        function verEmpresaID($id_empresa){
+            $query=$this->db->prepare("SELECT * FROM companias  WHERE id_empresa = ? ");
+            $query->execute([$id_empresa]);
+            $empresa = $query->fetch(PDO::FETCH_OBJ);
+            return $empresa;
+        }
+
 
         
         function agregarJuego($nombre,$genero,$empresa){
@@ -51,7 +55,3 @@
 
         
     }
-
-
-    
-    ?>

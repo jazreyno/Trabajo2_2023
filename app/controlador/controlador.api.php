@@ -8,7 +8,10 @@ abstract class ControladorApi {
 
     public function __construct() {
         $this->vista = new vistaAPI();
-        $this->data = file_get_contents("php://input"); 
+
+        //Permite leer la entrada enviada en formato RAW
+        $this->data=file_get_contents("php://input"); 
+
     }
 
     function getData(){ 
