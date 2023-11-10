@@ -19,11 +19,11 @@
     $router->addRoute('videojuegos', 'GET', 'ControladorVideojuegos', 'VerVideojuegos');
     $router->addRoute('videojuegos', 'POST', 'ControladorVideojuegos', 'agregarJuego'); 
     $router->addRoute('videojuegos/:ID', 'GET', 'ControladorVideojuegos', 'VerVideojuegoId');
-    $router->addRoute('videojuegos/:ID', 'PUT', 'ControladorVideojuegos', 'actualizarJuego');
+    $router->addRoute('videojuegos/update', 'PUT', 'ControladorVideojuegos', 'editarVideojuego');
     $router->addRoute('videojuegos/:ID', 'DELETE', 'ControladorVideojuegos', 'eliminarJuego');
      
-    $router->addRoute('usuario/token', 'GET', 'ControladorApi', 'getToken');
+    //$router->addRoute('usuario/token', 'GET', 'ControladorApi', 'getToken');
     
     //Ejecucion de la ruta
-     $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
+    $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
     

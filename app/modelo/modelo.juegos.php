@@ -44,11 +44,11 @@
         function verJuegosId($id){
             $query =$this->db->prepare("SELECT * FROM videojuegos INNER JOIN companias on videojuegos.id_empresa = companias.id_empresa WHERE id_videojuegos = ?");
             $query->execute([$id]);
-            return $query->fetchAll(PDO::FETCH_OBJ);
+            return $query->fetch(PDO::FETCH_OBJ);
         }
 
             
-        function actualizarJuego($nombre, $genero, $empresa, $id){
+        function actualizarJuego($id, $nombre, $genero, $empresa){
             $query=$this->db->prepare("UPDATE `videojuegos` SET videojuego = ? ,genero = ? ,id_empresa = ?  WHERE id_videojuegos = ?");
             $query->execute([$nombre,$genero,$empresa,$id]);
         }
