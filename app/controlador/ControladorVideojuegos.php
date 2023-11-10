@@ -39,14 +39,9 @@
             }
         }
 
-        // function verPorEmpresa($params = []){
-        //     $compania = $params[":COMPANIA"];
-        //     $compania_id = $this->modelojuegos->verEmpresaId($compania);
-        // }
-
-
         function agregarJuego($params = []){;
             $body = $_POST;
+            //print_r($_POST);
 
             //Insertamos el juego
             $nombre = $body['videojuego'];

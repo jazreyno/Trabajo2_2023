@@ -1,6 +1,7 @@
 <?php
     require_once './libs/Router.php';
     require_once './app/controlador/ControladorVideojuegos.php';
+    require_once './app/controlador/controlador.user.php';
 
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
@@ -21,6 +22,8 @@
     $router->addRoute('videojuegos/:ID', 'PUT', 'ControladorVideojuegos', 'actualizarJuego');
     $router->addRoute('videojuegos/:ID', 'DELETE', 'ControladorVideojuegos', 'eliminarJuego');
      
-    //ejecucion de la ruta
+    $router->addRoute('usuario/token', 'GET', 'ControladorApi', 'getToken');
+    
+    //Ejecucion de la ruta
      $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
     
