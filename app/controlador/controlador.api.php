@@ -15,6 +15,7 @@ abstract class ControladorApi {
     }
 
     function getData(){ 
-        return json_decode($this->data); 
+        parse_str($this->data, $data);
+        return $data; 
     }  
 }

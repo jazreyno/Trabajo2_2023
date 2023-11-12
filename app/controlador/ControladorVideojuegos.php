@@ -16,16 +16,35 @@
     
 
         function VerVideojuegos($params = []){
-           if (empty($params)){
-            $videojuegos = $this->modelojuegos->verJuegos($params);
-            return $this->vistajuegos->response($videojuegos, 200);
-           }
-           else {
-            $videojuego = $this->modelojuegos->verJuegos($params[":'ID"]);
-            if(!empty($videojuego)) {
-                return $this->vistajuegos->response($videojuego, 200);
+            
+            if (empty($params[":ID"])) { 
+                $orderby = null;
+                $order = null;
+                $limit = null;
+                $offset = null;
+    
+                if (isset($_GET["orderby"])){
+                    $orderby = $_GET["orderby"];
+                }
+    
+                if (isset($_GET["order"])){
+                    $order = $_GET["order"];
+                }
+    
+                if (isset($_GET["limit"])){
+                    $limit = $_GET["limit"];
+                }
+    
+                if (isset($_GET["offset"])){
+                    $offset = $_GET["offset"];
+                }
+    
+    
             }
-           }
+
+            $videojuegos = $this->modelojuegos->verJuegos($orderby, $order, $limit, $offset);
+             $this->vistajuegos->response($videojuegos, 200);
+          
         }
 
         function VerVideojuegoId($params = []){
@@ -39,14 +58,9 @@
             }
         }
 
-        // function verPorEmpresa($params = []){
-        //     $compania = $params[":COMPANIA"];
-        //     $compania_id = $this->modelojuegos->verEmpresaId($compania);
-        // }
-
-
         function agregarJuego($params = []){;
             $body = $_POST;
+            //print_r($_POST);
 
             //Insertamos el juego
             $nombre = $body['videojuego'];
@@ -69,47 +83,42 @@
             }
         }
 
-        function eliminarJuego($params = []){
-            $id = $params[':ID'];
-            $videojuegos=$this->modelojuegos->verJuegosId($id);
-            if ($videojuegos){
-            $this->modelojuegos->eliminarJuego($id);
-            $this->vistajuegos->response($videojuegos);
-           }
-           else{
-            $this->vistajuegos->response ("el videojuego del id= $id no ha sido encontrado. :c", 404);
-           }
+        // function eliminarJuego($params = []){
+        //     $id = $params[':ID'];
+        //     $videojuegos=$this->modelojuegos->verJuegosId($id);
+        //     if ($videojuegos){
+        //     $this->modelojuegos->eliminarJuego($id);
+        //     $this->vistajuegos->response($videojuegos);
+        //    }
+        //    else{
+        //     $this->vistajuegos->response ("el videojuego del id= $id no ha sido encontrado. :c", 404);
+        //    }
+        // }
 
-        }
+        function editarVideojuego($params = []){
+            $body = $this->getData();
+            $id = $body['id'];
 
-        function editarVideojuego($params= []){
-            $id = $params[':ID'];
-            $videojuego = $this->modelojuegos->verJuegos($id);
+            $videojuego = $this->modelojuegos->verJuegosId($id);
 
             if ($videojuego){
-                $body = $this->getData();
-
-                $nombre = $body->videojuegos;
-                $genero = $body->genero;
-                $empresa = $body->id_empresa;
+                $nombre = $body['videojuego'];
+                $genero = $body['genero'];
+                $empresa = $body['id_empresa'];
                 
-                //ver id!
-                $this->modelojuegos->actualizarJuego($nombre, $genero, $empresa, $id);
-                $this->vistajuegos->response(["mensaje" => "mensaje':'videojuego $id ha sido actualizado :D"], 200);
+                $this->modelojuegos->actualizarJuego($id, $nombre, $genero, $empresa);
+                $videojuego = $this->modelojuegos->verJuegosId($id);
+                
+                $this->vistajuegos->response(["El videojuego $id ha sido actualizado :D"], 200);
                 
             }
             else {
                 $this->vistajuegos->response ("el videojuego $id no ha sido encontrado. :c", 404);
             }
-
         }
 
-        /*
-             function actualizarJuego($nombre, $genero, $empresa, $id){
-            $query=$this->db->prepare("UPDATE `videojuegos` SET videojuego = ? ,genero = ? ,id_empresa = ?  WHERE id_videojuegos = ?");
-            $query->execute([$nombre,$genero,$empresa,$id]);
-        }
 
-        */
+
+
 
 }

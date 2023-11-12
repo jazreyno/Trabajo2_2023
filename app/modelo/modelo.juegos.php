@@ -7,15 +7,72 @@
             $this->db = new PDO('mysql:host=localhost;dbname=trabajo_especial;charset=utf8', 'root', '');
         }
 
-        function verJuegos($order){
-            
-            $query = $this->db->prepare("SELECT * FROM videojuegos LEFT JOIN companias on videojuegos.id_empresa = companias.id_empresa");
-            $query->execute();
+        function verJuegos($orderby, $order, $limit, $offset){
+            {
 
-            //Obtengo arreglo de juegos
-            $videojuegos= $query->fetchAll(PDO::FETCH_OBJ);
+                $sql_order = "";
+                $sql_limit_offset = "";
+        
+                $order = strtoupper($order);
+                switch ($order) {
+                    case "ASC":
+                        $order_dir = "ASC";
+                        break;
+                    case "DESC":
+                        $order_dir = "DESC";
+                        break;
+                    default:
+                        $order_dir = "ASC";
+                        break;
+                }
+        
+                switch ($orderby) {
+        
+                    case "nombre":
+                        $sql_order = "ORDER BY v.nombre $order_dir";
+                        break;
+                    case "genero":
+                        $sql_order = "ORDER BY v.genero $order_dir";
+                        break;
+                    case "empresas":
+                        $sql_order = "ORDER BY companias $order_dir";
+                        break;
+        
+                    default:
+                        $sql_order = "";
+                        break;
+        
+                }
+        
+                if ($limit != null && $limit > 0) {
+        
+                    try {
+        
+                        $sql_limit_offset = "LIMIT " . intval($limit);
+        
+                        if ($offset != null && $offset > 0) {
+                            try {
+                                $sql_limit_offset .= " OFFSET " . intval($offset);
+                            } catch (Exception $e) {
+                                $sql_limit_offset = "";
+                            }
+                        }
+        
+                    } catch (Exception $e) {
+                        $sql_limit_offset = "";
+                    }
+        
+                }
+            }
             
-            return $videojuegos;
+            $stmt  = $this->db->prepare("SELECT  v.nombre, v.genero, c.nombre AS 'companias' FROM videojuegos v LEFT JOIN
+             companias c ON  v.id_empresa = c.id_empresa
+            $sql_order
+            $sql_limit_offset");
+
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $result;
         }
   
 
@@ -44,11 +101,11 @@
         function verJuegosId($id){
             $query =$this->db->prepare("SELECT * FROM videojuegos INNER JOIN companias on videojuegos.id_empresa = companias.id_empresa WHERE id_videojuegos = ?");
             $query->execute([$id]);
-            return $query->fetchAll(PDO::FETCH_OBJ);
+            return $query->fetch(PDO::FETCH_OBJ);
         }
 
             
-        function actualizarJuego($nombre, $genero, $empresa, $id){
+        function actualizarJuego($id, $nombre, $genero, $empresa){
             $query=$this->db->prepare("UPDATE `videojuegos` SET videojuego = ? ,genero = ? ,id_empresa = ?  WHERE id_videojuegos = ?");
             $query->execute([$nombre,$genero,$empresa,$id]);
         }
