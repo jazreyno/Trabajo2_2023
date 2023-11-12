@@ -61,6 +61,7 @@
         function agregarJuego($params = []){;
             $body = $_POST;
             //print_r($_POST);
+            //print_r($_POST);
 
             //Insertamos el juego
             $nombre = $body['videojuego'];
@@ -83,6 +84,17 @@
             }
         }
 
+        // function eliminarJuego($params = []){
+        //     $id = $params[':ID'];
+        //     $videojuegos=$this->modelojuegos->verJuegosId($id);
+        //     if ($videojuegos){
+        //     $this->modelojuegos->eliminarJuego($id);
+        //     $this->vistajuegos->response($videojuegos);
+        //    }
+        //    else{
+        //     $this->vistajuegos->response ("el videojuego del id= $id no ha sido encontrado. :c", 404);
+        //    }
+        // }
         // function eliminarJuego($params = []){
         //     $id = $params[':ID'];
         //     $videojuegos=$this->modelojuegos->verJuegosId($id);
