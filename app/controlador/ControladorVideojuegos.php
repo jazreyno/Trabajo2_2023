@@ -118,20 +118,24 @@
 
 
 
-        // function verEmpresaID($params = []) {
-        //     // Obtener orden por empresa
-        //     $order = null;
-        //     if (isset($_GET["order"])) {
-        //         $order = $_GET["order"];
-        //     }
-    
-        //     $empresa = $this->modelojuegos->verEmpresaID($order);
-        //     if (!empty($empresa)) {
-        //         $this->vistajuegos->response($empresa, 200);
-        //     } else {
-        //         $this->vistajuegos->response(["La empresa no fue encontrada"], 404);
-        //     }
-        // }
+        function verEmpresaID($params = []) {
+            $id = $params[":ID"];            
+            // Obtener orden por empresa
+            $order = null;
+            if (isset($_GET["order"])) {
+                $order = $_GET["order"];
+            }
+            
+           
+            $empresa = $this->modelojuegos->verEmpresaID($id);
+            if (!empty($empresa)) {
+                $this->vistajuegos->response($empresa, 200);
+            } else {
+                $this->vistajuegos->response(["La empresa no fue encontrada"], 404);
+            }
+
+
+        }
 
 
 
