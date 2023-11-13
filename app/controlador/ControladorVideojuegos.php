@@ -16,7 +16,6 @@
     
 
         function VerVideojuegos($params = []){
-            
             if (empty($params[":ID"])) { 
                 $orderby = null;
                 $order = null;
@@ -38,13 +37,10 @@
                 if (isset($_GET["offset"])){
                     $offset = $_GET["offset"];
                 }
-    
-    
             }
 
             $videojuegos = $this->modelojuegos->verJuegos($orderby, $order, $limit, $offset);
-             $this->vistajuegos->response($videojuegos, 200);
-          
+            $this->vistajuegos->response($videojuegos, 200);
         }
 
         function VerVideojuegoId($params = []){
@@ -60,7 +56,6 @@
 
         function agregarJuego($params = []){;
             $body = $_POST;
-            //print_r($_POST);
             //print_r($_POST);
 
             //Insertamos el juego
@@ -84,28 +79,19 @@
             }
         }
 
-        // function eliminarJuego($params = []){
-        //     $id = $params[':ID'];
-        //     $videojuegos=$this->modelojuegos->verJuegosId($id);
-        //     if ($videojuegos){
-        //     $this->modelojuegos->eliminarJuego($id);
-        //     $this->vistajuegos->response($videojuegos);
-        //    }
-        //    else{
-        //     $this->vistajuegos->response ("el videojuego del id= $id no ha sido encontrado. :c", 404);
-        //    }
-        // }
-        // function eliminarJuego($params = []){
-        //     $id = $params[':ID'];
-        //     $videojuegos=$this->modelojuegos->verJuegosId($id);
-        //     if ($videojuegos){
-        //     $this->modelojuegos->eliminarJuego($id);
-        //     $this->vistajuegos->response($videojuegos);
-        //    }
-        //    else{
-        //     $this->vistajuegos->response ("el videojuego del id= $id no ha sido encontrado. :c", 404);
-        //    }
-        // }
+
+
+        function eliminarJuego($params = []){
+            $id = $params[':ID'];
+            $videojuegos=$this->modelojuegos->verJuegosId($id);
+            if ($videojuegos){
+            $this->modelojuegos->eliminarJuego($id);
+            $this->vistajuegos->response($videojuegos);
+           }
+           else{
+            $this->vistajuegos->response ("el videojuego del id= $id no ha sido encontrado. :c", 404);
+           }
+        }
 
         function editarVideojuego($params = []){
             $body = $this->getData();
@@ -130,6 +116,22 @@
         }
 
 
+
+
+        // function verEmpresaID($params = []) {
+        //     // Obtener orden por empresa
+        //     $order = null;
+        //     if (isset($_GET["order"])) {
+        //         $order = $_GET["order"];
+        //     }
+    
+        //     $empresa = $this->modelojuegos->verEmpresaID($order);
+        //     if (!empty($empresa)) {
+        //         $this->vistajuegos->response($empresa, 200);
+        //     } else {
+        //         $this->vistajuegos->response(["La empresa no fue encontrada"], 404);
+        //     }
+        // }
 
 
 

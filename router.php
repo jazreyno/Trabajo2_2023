@@ -22,6 +22,8 @@
     $router->addRoute('videojuegos/update', 'PUT', 'ControladorVideojuegos', 'editarVideojuego');
     $router->addRoute('videojuegos/:ID', 'DELETE', 'ControladorVideojuegos', 'eliminarJuego');
      
+    $router->addRoute('compania', 'GET', 'ControladorVideojuegos', 'verEmpresaID');
+
     //$router->addRoute('usuario/token', 'GET', 'ControladorApi', 'getToken');
     
     //Ejecucion de la ruta
