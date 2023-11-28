@@ -2,7 +2,7 @@
 
     eje:http://localhost/api/videojuegos
     
--para poder traer un videojuego especifico utlizamos el siguiente endpoint:
+-Traer un videojuego especifico utlizamos el siguiente endpoint:
       
     eje:  http://localhost/api/videojuegos/13
 
@@ -10,15 +10,23 @@
     
     eje: http://localhost/api/videojuegos/13
 
--en el caso de querer modificar un videojuego ponemos el siguiente endpoint:
+-Modificar un videojuego por PUT
+    api/videojuegos/update
+    id, videojuego, genero, id_empresa
+    Ej: http://localhost/api/videojuegos/update
 
-    eje: http://localhost/api/videojuegos/13
+
 
 -si desea poder ordernar/filtrar utilizamos el siguiente endpoint:
     
    eje: http://localhost/api/videojuegos?orderby=id_empresa&order=asc&limit=23&offset=1
 
--para poder agregar un videojuego:
+
+-Agregar un videojuego por POST:
+api/videojuegos/
+videojuego, genero, id_empresa
+    Ej: http://localhost/web/TercerEntrega/Trabajo2_2023/api/videojuegos
+
 {
     "videojuego" : "",
 

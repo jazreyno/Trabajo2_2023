@@ -106,9 +106,9 @@
                 
                 $this->modelojuegos->actualizarJuego($id, $nombre, $genero, $empresa);
                 $videojuego = $this->modelojuegos->verJuegosId($id);
-                
+                                
                 $this->vistajuegos->response(["El videojuego $id ha sido actualizado :D"], 200);
-                
+        
             }
             else {
                 $this->vistajuegos->response ("el videojuego $id no ha sido encontrado. :c", 404);
