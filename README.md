@@ -32,7 +32,6 @@
 
 
 -Modificar un videojuego por PUT
-
     api/videojuegos/update
     id, videojuego, genero, id_empresa
     Ej: http://localhost/api/videojuegos/update
@@ -50,4 +49,4 @@
     }
 
 
-para seleccionar la empresa,puede elegir id: 6(epic), 15(riot games)
+Para seleccionar la empresa,puede elegir id: 6(epic), 15(riot games)
