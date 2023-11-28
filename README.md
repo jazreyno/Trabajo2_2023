@@ -10,12 +10,6 @@
     
     eje: http://localhost/api/videojuegos/13
 
--Modificar un videojuego por PUT
-    api/videojuegos/update
-    id, videojuego, genero, id_empresa
-    Ej: http://localhost/api/videojuegos/update
-
-
 
 -si desea poder ordernar/filtrar utilizamos el siguiente endpoint:
     
@@ -23,9 +17,10 @@
 
 
 -Agregar un videojuego por POST:
-api/videojuegos/
-videojuego, genero, id_empresa
+    api/videojuegos/
+    videojuego, genero, id_empresa
     Ej: http://localhost/web/TercerEntrega/Trabajo2_2023/api/videojuegos
+
 
 {
     "videojuego" : "",
@@ -34,5 +29,12 @@ videojuego, genero, id_empresa
 
     id_empresa: 
 }
+
+
+-Modificar un videojuego por PUT
+    api/videojuegos/update
+    id, videojuego, genero, id_empresa
+    Ej: http://localhost/api/videojuegos/update
+
 
 para seleccionar la empresa,puede elegir id: 6(epic), 15(riot games)
