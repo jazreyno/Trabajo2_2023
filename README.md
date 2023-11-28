@@ -36,6 +36,7 @@
     id, videojuego, genero, id_empresa
     Ej: http://localhost/api/videojuegos/update
 
+
     {
 
         "id_videojuegos": "95",
