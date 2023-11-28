@@ -1,1 +1,30 @@
-Seleccionamos como enfoque para el diseño de nuestra base de datos los videojuegos y sus relaciones con las empresas de desarrollo. La tabla de videojuegos consta de una clave primaria llamada "id_videojuegos", nombre del juego (como varchar) y genero (en formato de texto). Además, establecemos una relación a través de la clave foránea id_empresa que se conecta con la tabla de compañías. Esta última tabla, por su parte, emplea "id_empresa" como clave primaria y almacena datos como el nombre de la empresa (utilizando el tipo de dato varchar), su cotización (representada como un número entero) y la fecha de creación de la compañía. tema: venta de videojuegos. integrantes:olivia todesco y jazmin reynoso.
+-si queremos poder visualizar todos los videojuegos:
+
+    eje:http://localhost/api/videojuegos
+    
+-para poder traer un videojuego especifico utlizamos el siguiente endpoint:
+      
+    eje:  http://localhost/api/videojuegos/13
+
+-si queremos eliminar un videojuego ponemos el siguiente endpoint:
+    
+    eje: http://localhost/api/videojuegos/13
+
+-en el caso de querer modificar un videojuego ponemos el siguiente endpoint:
+
+    eje: http://localhost/api/videojuegos/13
+
+-si desea poder ordernar/filtrar utilizamos el siguiente endpoint:
+    
+   eje: http://localhost/api/videojuegos?orderby=id_empresa&order=asc&limit=23&offset=1
+
+-para poder agregar un videojuego:
+{
+    "videojuego" : "",
+
+    "genero": "",
+
+    id_empresa: 
+}
+
+para seleccionar la empresa,puede elegir id: 6(epic), 15(riot games)
