@@ -2,7 +2,7 @@
 
     Ej:http://localhost/api/videojuegos
     
-## -Obyrnrt un videojuego especifico:
+## -Obtener un videojuego especifico:
       
     Ej:  http://localhost/api/videojuegos/13
 
