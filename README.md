@@ -21,31 +21,24 @@
     videojuego, genero, id_empresa
     Ej: http://localhost/Trabajo2_2023/api/videojuegos
 
-{
+    {
+        
+        "videojuego" : "eqwe",
+        "genero": "eqwe",
+        "id_empresa" : 4 
 
-    "videojuego" : "",
-
-    "genero": "",
-
-    id_empresa: 
-}
+    }
 
 
-<<<<<<< HEAD
--Modificar un videojuego por PUT
-
-=======
 ## -Modificar un videojuego por PUT
->>>>>>> 88fc8ebbb30d859636d55ffe6b63a71eccd52683
-    api/videojuegos/update
-    id, videojuego, genero, id_empresa
+
+    api/videojuegos/id
+    videojuego, genero, id_empresa
     Ej: http://localhost/api/videojuegos/update
 
     {
 
-        "id_videojuegos": "95",
-
-        "videojuego": "123453",
+        "videojuego": "lol",
 
         "genero": "rol",
 
@@ -54,17 +47,6 @@
     }
 
 
-    {
-
-        "id_videojuegos": "95",
-
-        "videojuego": "123453",
-
-        "genero": "rol",
-
-        "id_empresa": "4"
-        
-    }
 
 
 Para seleccionar la empresa,puede elegir id: 6(epic), 15(riot games)
