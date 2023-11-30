@@ -13,9 +13,8 @@ abstract class ControladorApi {
         $this->data=file_get_contents("php://input"); 
 
     }
-
+    
     function getData(){ 
-        parse_str($this->data, $data);
-        return $data; 
+        return json_decode($this->data); 
     }  
 }
